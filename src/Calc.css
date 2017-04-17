@@ -3,8 +3,16 @@
       color: #FFFFFF;
       white-space: pre-wrap;
   }
-.Calc2 {
-    text-align: center;
-    color: #FFFFFF;
-    white-space: pre-wrap;
+
+.Scratch {
+    height: 48px;
+    position: relative;
+}
+
+text {
+    position: relative;
+    top: -17px;
+    left: -29px;
+    width: 100%;
+    color: black;
 }

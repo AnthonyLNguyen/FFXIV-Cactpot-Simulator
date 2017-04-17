@@ -23,3 +23,8 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.Scratch {
+  height: 32px;
+    position: relative;
+}

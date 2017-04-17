@@ -147,43 +147,59 @@ class Calc extends Component {
     render() {
         return (
             <div className="Calc">
+                <div className="Scratch">
+
+
                 <p>
                     {'\t'}
-                    <text onClick={() => this.select(6)}>{tri[6] ? '▲' : '△'}</text>
+                    <text onClick={() => this.select(6)} style={{color: 'lightyellow'}}>{tri[6] ? '▲' : '△'}</text>
                     {'\t'}
-                    <text onClick={() => this.select(3)}>{tri[3] ? '▼' : '▽'}</text>
+                    <img src={require('./scratch.png')} className="Scratch" alt="" style={{opacity:0}}/>
+                    <text onClick={() => this.select(3)} style={{color: 'lightyellow'}}>{tri[3] ? '▼' : '▽'}</text>
                     {'\t'}
-                    <text onClick={() => this.select(4)}>{tri[4] ? '▼' : '▽'}</text>
+                    <img src={require('./scratch.png')} className="Scratch" alt="" style={{opacity:0}}/>
+                    <text onClick={() => this.select(4)} style={{color: 'lightyellow'}}>{tri[4] ? '▼' : '▽'}</text>
                     {'\t'}
-                    <text onClick={() => this.select(5)}>{tri[5] ? '▼' : '▽'}</text>
+                    <img src={require('./scratch.png')} className="Scratch" alt="" style={{opacity:0}}/>
+                    <text onClick={() => this.select(5)} style={{color: 'lightyellow'}}>{tri[5] ? '▼' : '▽'}</text>
                     {'\t'}
-                    <text onClick={() => this.select(7)}>{tri[7] ? '▲' : '△'}</text>
+                    <text onClick={() => this.select(7)} style={{color: 'lightyellow'}}>{tri[7] ? '▲' : '△'}</text>
                 </p>
+
                 <p>
-                    <text onClick={() => this.select(0)}>{tri[0] ? '▶' : '▷'}</text>
+                    <text onClick={() => this.select(0)} style={{color: 'lightyellow'}}>{tri[0] ? '▶' : '▷'}</text>
                     {'\t'}
+                    <img src={require('./scratch.png')} className="Scratch" alt=""/>
                     <text onClick={() => this.scratch(0,0)}>{hid[0][0] ? val[0][0] : 'X'}</text>
                     {'\t'}
+                    <img src={require('./scratch.png')} className="Scratch" alt=""/>
                     <text onClick={() => this.scratch(1,0)}>{hid[1][0] ? val[1][0] : 'X'}</text>
                     {'\t'}
+                    <img src={require('./scratch.png')} className="Scratch" alt=""/>
                     <text onClick={() => this.scratch(2,0)}>{hid[2][0] ? val[2][0] : 'X'}</text>
                 </p>
                 <p>
-                    <text onClick={() => this.select(1)}>{tri[1] ? '▶' : '▷'}</text>
+                    <text onClick={() => this.select(1)} style={{color: 'lightyellow'}}>{tri[1] ? '▶' : '▷'}</text>
                     {'\t'}
+                    <img src={require('./scratch.png')} className="Scratch" alt=""/>
                     <text onClick={() => this.scratch(0,1)}>{hid[0][1] ? val[0][1] : 'X'}</text>
                     {'\t'}
+                    <img src={require('./scratch.png')} className="Scratch" alt=""/>
                     <text onClick={() => this.scratch(1,1)}>{hid[1][1] ? val[1][1] : 'X'}</text>
                     {'\t'}
+                    <img src={require('./scratch.png')} className="Scratch" alt=""/>
                     <text onClick={() => this.scratch(2,1)}>{hid[2][1] ? val[2][1] : 'X'}</text>
                 </p>
                 <p>
-                    <text onClick={() => this.select(2)}>{tri[2] ? '▶' : '▷'}</text>
+                    <text onClick={() => this.select(2)} style={{color: 'lightyellow'}}>{tri[2] ? '▶' : '▷'}</text>
                     {'\t'}
+                    <img src={require('./scratch.png')} className="Scratch" alt=""/>
                     <text onClick={() => this.scratch(0,2)}>{hid[0][2] ? val[0][2] : 'X'}</text>
                     {'\t'}
+                    <img src={require('./scratch.png')} className="Scratch" alt=""/>
                     <text onClick={() => this.scratch(1,2)}>{hid[1][2] ? val[1][2] : 'X'}</text>
                     {'\t'}
+                    <img src={require('./scratch.png')} className="Scratch" alt=""/>
                     <text onClick={() => this.scratch(2,2)}>{hid[2][2] ? val[2][2] : 'X'}</text>
                 </p>
                 <p>
@@ -193,7 +209,7 @@ class Calc extends Component {
                 <p>
                     <text style = {{color: 'lightgreen'}}>{defaultRewards[selsum-6]}</text>
                 </p>
-            </div>
+            </div></div>
 
         );
     }
