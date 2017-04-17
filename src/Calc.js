@@ -191,7 +191,7 @@ class Calc extends Component {
                     <button onClick={this.submit}>Submit</button>
                 </p>
                 <p>
-                    {defaultRewards[selsum-6]}
+                    <text style = {{color: 'lightgreen'}}>{defaultRewards[selsum-6]}</text>
                 </p>
             </div>
 
