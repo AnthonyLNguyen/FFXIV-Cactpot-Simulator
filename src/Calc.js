@@ -16,7 +16,7 @@ var hid = [
     [0,0,0]
 ]
 
-var defaultRewards = [10000,36,720,360,80,252,108,72,54,180,72,180,119,36,306,1080,144,1800,3600]
+const defaultRewards = [10000,36,720,360,80,252,108,72,54,180,72,180,119,36,306,1080,144,1800,3600]
 
 var nums = [1,2,3,4,5,6,7,8,9]
 
@@ -123,15 +123,16 @@ class Calc extends Component {
     submit(){
         if(sel > -1 && count > 2) {
             hid = [
-                [1,1,1],
-                [1,1,1],
-                [1,1,1]
+                [1, 1, 1],
+                [1, 1, 1],
+                [1, 1, 1]
             ]
+
+            selsum = sums[sel];
+            this.setState(prevState => ({
+                isToggleOn: !prevState.isToggleOn
+            }));
         }
-        selsum = sums[sel];
-        this.setState(prevState => ({
-            isToggleOn: !prevState.isToggleOn
-        }));
     }
 
     random() {
