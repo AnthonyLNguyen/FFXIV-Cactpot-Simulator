@@ -11,7 +11,7 @@ class App extends Component {
           <h2>Mini Cactpot Simulator</h2>
         </div>
         <p className="App-intro">
-          Press Start to begin.<Calc/>
+          Press "New Ticket" to begin.<Calc/>
         </p>
       </div>
     );

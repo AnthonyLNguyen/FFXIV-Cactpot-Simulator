@@ -85,6 +85,8 @@ function printVal(i){
     return s;
 }
 
+
+
 class Calc extends Component {
     constructor(props) {
         super(props);
@@ -95,6 +97,7 @@ class Calc extends Component {
         this.random = this.random.bind(this);
         this.select = this.select.bind(this);
         this.submit = this.submit.bind(this);
+        this.changeColor = this.changeColor.bind(this);
     }
 
     scratch(x, y) {
@@ -144,14 +147,17 @@ class Calc extends Component {
             isToggleOn: !prevState.isToggleOn
         }));
     }
+
+    changeColor(id,op){
+        document.getElementById(id).style.opacity = op;
+    }
+
     render() {
         return (
             <div className="Calc">
                 <div className="Scratch">
-
-
                 <p>
-                    {'\t'}
+                    {'\t\t'}
                     <text onClick={() => this.select(6)} style={{color: 'lightyellow'}}>{tri[6] ? '▲' : '△'}</text>
                     {'\t'}
                     <img src={require('./scratch.png')} className="Scratch" alt="" style={{opacity:0}}/>
@@ -162,54 +168,58 @@ class Calc extends Component {
                     {'\t'}
                     <img src={require('./scratch.png')} className="Scratch" alt="" style={{opacity:0}}/>
                     <text onClick={() => this.select(5)} style={{color: 'lightyellow'}}>{tri[5] ? '▼' : '▽'}</text>
-                    {'\t'}
+                    {'\t\t'}
                     <text onClick={() => this.select(7)} style={{color: 'lightyellow'}}>{tri[7] ? '▲' : '△'}</text>
                 </p>
 
                 <p>
-                    <text onClick={() => this.select(0)} style={{color: 'lightyellow'}}>{tri[0] ? '▶' : '▷'}</text>
+                    <text  onClick={() => this.select(0)} style={{color: 'lightyellow'}}>{tri[0] ? '▶' : '▷'}</text>
                     {'\t'}
-                    <img src={require('./scratch.png')} className="Scratch" alt=""/>
-                    <text onClick={() => this.scratch(0,0)}>{hid[0][0] ? val[0][0] : 'X'}</text>
+                    <img src={require('./scratch.png')} onClick={() => this.scratch(0,0)} className="Scratch" alt="" id="scratch1" onMouseOver={() =>this.changeColor("scratch1",.5)} onMouseLeave={() => this.changeColor("scratch1",1)}/>
+                    <text onClick={() => this.scratch(0,0)} onMouseOver={() =>this.changeColor("scratch1",.5)} onMouseLeave={() => this.changeColor("scratch1",1)}>{hid[0][0] ? val[0][0] : ' '}</text>
                     {'\t'}
-                    <img src={require('./scratch.png')} className="Scratch" alt=""/>
-                    <text onClick={() => this.scratch(1,0)}>{hid[1][0] ? val[1][0] : 'X'}</text>
+                    <img src={require('./scratch.png')} onClick={() => this.scratch(1,0)} className="Scratch" alt="" id="scratch2" onMouseOver={() =>this.changeColor("scratch2",.5)} onMouseLeave={() => this.changeColor("scratch2",1)}/>
+                    <text onClick={() => this.scratch(1,0)} onMouseOver={() =>this.changeColor("scratch2",.5)} onMouseLeave={() => this.changeColor("scratch2",1)}>{hid[1][0] ? val[1][0] : ' '}</text>
                     {'\t'}
-                    <img src={require('./scratch.png')} className="Scratch" alt=""/>
-                    <text onClick={() => this.scratch(2,0)}>{hid[2][0] ? val[2][0] : 'X'}</text>
+                    <img src={require('./scratch.png')} onClick={() => this.scratch(2,0)} className="Scratch" alt="" id="scratch3" onMouseOver={() =>this.changeColor("scratch3",.5)} onMouseLeave={() => this.changeColor("scratch3",1)}/>
+                    <text onClick={() => this.scratch(2,0)} onMouseOver={() =>this.changeColor("scratch3",.5)} onMouseLeave={() => this.changeColor("scratch3",1)}>{hid[2][0] ? val[2][0] : '  '}</text>
+                    {'\t'}
                 </p>
                 <p>
                     <text onClick={() => this.select(1)} style={{color: 'lightyellow'}}>{tri[1] ? '▶' : '▷'}</text>
                     {'\t'}
-                    <img src={require('./scratch.png')} className="Scratch" alt=""/>
-                    <text onClick={() => this.scratch(0,1)}>{hid[0][1] ? val[0][1] : 'X'}</text>
+                    <img src={require('./scratch.png')} onClick={() => this.scratch(0,1)} className="Scratch" alt="" id="scratch4" onMouseOver={() =>this.changeColor("scratch4",.5)} onMouseLeave={() => this.changeColor("scratch4",1)}/>
+                    <text onClick={() => this.scratch(0,1)} onMouseOver={() =>this.changeColor("scratch4",.5)} onMouseLeave={() => this.changeColor("scratch4",1)}>{hid[0][1] ? val[0][1] : ' '}</text>
                     {'\t'}
-                    <img src={require('./scratch.png')} className="Scratch" alt=""/>
-                    <text onClick={() => this.scratch(1,1)}>{hid[1][1] ? val[1][1] : 'X'}</text>
+                    <img src={require('./scratch.png')} onClick={() => this.scratch(1,1)} className="Scratch" alt="" id="scratch5" onMouseOver={() =>this.changeColor("scratch5",.5)} onMouseLeave={() => this.changeColor("scratch5",1)}/>
+                    <text onClick={() => this.scratch(1,1)} onMouseOver={() =>this.changeColor("scratch5",.5)} onMouseLeave={() => this.changeColor("scratch5",1)}>{hid[1][1] ? val[1][1] : ' '}</text>
                     {'\t'}
-                    <img src={require('./scratch.png')} className="Scratch" alt=""/>
-                    <text onClick={() => this.scratch(2,1)}>{hid[2][1] ? val[2][1] : 'X'}</text>
+                    <img src={require('./scratch.png')} onClick={() => this.scratch(2,1)} className="Scratch" alt="" id="scratch6" onMouseOver={() =>this.changeColor("scratch6",.5)} onMouseLeave={() => this.changeColor("scratch6",1)}/>
+                    <text onClick={() => this.scratch(2,1)} onMouseOver={() =>this.changeColor("scratch6",.5)} onMouseLeave={() => this.changeColor("scratch6",1)}>{hid[2][1] ? val[2][1] : '  '}</text>
+                    {'\t'}
                 </p>
                 <p>
                     <text onClick={() => this.select(2)} style={{color: 'lightyellow'}}>{tri[2] ? '▶' : '▷'}</text>
                     {'\t'}
-                    <img src={require('./scratch.png')} className="Scratch" alt=""/>
-                    <text onClick={() => this.scratch(0,2)}>{hid[0][2] ? val[0][2] : 'X'}</text>
+                    <img src={require('./scratch.png')} onClick={() => this.scratch(0,2)} className="Scratch" alt="" id="scratch7" onMouseOver={() =>this.changeColor("scratch7",.5)} onMouseLeave={() => this.changeColor("scratch7",1)}/>
+                    <text onClick={() => this.scratch(0,2)} onMouseOver={() =>this.changeColor("scratch7",.5)} onMouseLeave={() => this.changeColor("scratch7",1)}>{hid[0][2] ? val[0][2] : ' '}</text>
                     {'\t'}
-                    <img src={require('./scratch.png')} className="Scratch" alt=""/>
-                    <text onClick={() => this.scratch(1,2)}>{hid[1][2] ? val[1][2] : 'X'}</text>
+                    <img src={require('./scratch.png')} onClick={() => this.scratch(1,2)} className="Scratch" alt="" id="scratch8" onMouseOver={() =>this.changeColor("scratch8",.5)} onMouseLeave={() => this.changeColor("scratch8",1)}/>
+                    <text onClick={() => this.scratch(1,2)} onMouseOver={() =>this.changeColor("scratch8",.5)} onMouseLeave={() => this.changeColor("scratch8",1)}>{hid[1][2] ? val[1][2] : ' '}</text>
                     {'\t'}
-                    <img src={require('./scratch.png')} className="Scratch" alt=""/>
-                    <text onClick={() => this.scratch(2,2)}>{hid[2][2] ? val[2][2] : 'X'}</text>
+                    <img src={require('./scratch.png')} onClick={() => this.scratch(2,2)} className="Scratch" alt="" id="scratch9" onMouseOver={() =>this.changeColor("scratch9",.5)} onMouseLeave={() => this.changeColor("scratch9",1)}/>
+                    <text onClick={() => this.scratch(2,2)} onMouseOver={() =>this.changeColor("scratch9",.5)} onMouseLeave={() => this.changeColor("scratch9",1)}>{hid[2][2] ? val[2][2] : '  '}</text>
+                    {'\t'}
                 </p>
-                <p>
-                    <button onClick={this.random}>Start</button>
-                    <button onClick={this.submit}>Submit</button>
-                </p>
-                <p>
-                    <text style = {{color: 'lightgreen'}}>{defaultRewards[selsum-6]}</text>
-                </p>
-            </div></div>
+                    <p>
+                        <button onClick={this.random}>New Ticket</button>
+                        <button onClick={this.submit}>Submit</button>
+                    </p>
+                    <p>
+                        <text style = {{color: 'lightgreen'}}>{defaultRewards[selsum-6]}</text>
+                    </p>
+                </div>
+            </div>
 
         );
     }
