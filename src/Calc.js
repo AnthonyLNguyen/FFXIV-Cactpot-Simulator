@@ -156,6 +156,9 @@ class Calc extends Component {
     render() {
         return (
             <div className="Calc">
+                <p>
+                    <button onClick={this.random}>New Ticket</button>
+                </p>
                 <div className="Scratch">
                 <p>
                     {'\t\t'}
@@ -213,11 +216,10 @@ class Calc extends Component {
                     {'\t'}
                 </p>
                     <p>
-                        <button onClick={this.random}>New Ticket</button>
-                        <button onClick={this.submit}>Submit</button>
+                        <button onClick={this.submit}>Confirm</button>
                     </p>
                     <p>
-                        <text style = {{color: 'lightgreen'}}>{defaultRewards[selsum-6]}</text>
+                        {'\t'}<text className="Score" >Score: {defaultRewards[selsum-6]} MGP</text>
                     </p>
                 </div>
                 <div className="Rewards">

@@ -5,6 +5,11 @@
         white-space: pre-wrap;
   }
 
+.Score{
+    color: lightgreen;
+
+}
+
 .Rewards{
     position: relative;
     top: 300px;
