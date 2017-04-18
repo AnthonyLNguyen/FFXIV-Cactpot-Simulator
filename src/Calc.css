@@ -5,6 +5,16 @@
         white-space: pre-wrap;
   }
 
+.Rewards{
+    position: relative;
+    top: 300px;
+    margin: auto;
+    align: center;
+    padding-bottom: 100px;
+    background-color: #444;
+    padding-top: 16px;
+}
+
 .Scratch {
     height: 48px;
     position: relative;

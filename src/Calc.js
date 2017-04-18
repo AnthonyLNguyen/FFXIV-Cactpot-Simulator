@@ -3,6 +3,7 @@
  */
 import React, { Component } from 'react';
 import './Calc.css';
+import Rewards from './Rewards';
 
 var val = [
     [0,0,0],
@@ -218,6 +219,9 @@ class Calc extends Component {
                     <p>
                         <text style = {{color: 'lightgreen'}}>{defaultRewards[selsum-6]}</text>
                     </p>
+                </div>
+                <div className="Rewards">
+                    <Rewards/>
                 </div>
             </div>
 
