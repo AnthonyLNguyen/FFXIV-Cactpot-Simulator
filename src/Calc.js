@@ -246,23 +246,24 @@ class Calc extends Component {
                 </div>
                 <div className="Rules">
                     <p>
-                        1. Select Numbers
+                        1. Select Numbers:
                         Every ticket has nine spaces, each numbered randomly from one to nine. At the start, however,
                         eight of these nine spaces will be hidden. To begin, select three numbers from the eight hidden
                         on your ticket.
                     </p>
                     <p>
-                        2. Select a Line
+                        2. Select a Line:
                         Next, select one of eight lines─vertical, horizontal, or diagonal. When selecting a line, the
                         sum of the three numbers in that line will determine the amount of MGP you receive.
                     </p>
                     <p>
-                        3. Receive a Prize
+                        3. Receive a Prize:
                         After you have selected a line, all the numbers are uncovered and you will receive MGP based on
                         the sum of the line you chose.
                     </p>
                 </div>
                 <div className="Rewards">
+
                     <Rewards/>
                     <p>Developed by Anthony Nguyen</p>
                 </div>
