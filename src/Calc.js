@@ -207,7 +207,7 @@ class Calc extends Component {
                 <p>
                     <button onClick={this.random}>New Ticket</button>
                 </p>
-                <div className="Scratch">
+                <div className="Scratch" id="scratch">
                     <p className="Buttons">
                         <text onClick={() => this.select(6)} style={{color: 'lightyellow'}}>{tri[6] ? '▲' : '△'}</text>
                         <text onClick={() => this.select(3)} style={{color: 'lightyellow'}}>{tri[3] ? '▼' : '▽'}</text>
@@ -330,6 +330,7 @@ class Calc extends Component {
 
                     <Rewards/>
                     <p>Developed by Anthony Nguyen</p>
+                    <a href="https://github.com/Thingon">https://github.com/Thingon</a>
                 </div>
             </div>
 
