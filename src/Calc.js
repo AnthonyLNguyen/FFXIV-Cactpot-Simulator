@@ -97,7 +97,7 @@ class Calc extends Component {
         this.random = this.random.bind(this);
         this.select = this.select.bind(this);
         this.submit = this.submit.bind(this);
-        this.changeColor = this.changeColor.bind(this);
+        this.changeOpacity = this.changeOpacity.bind(this);
     }
 
     scratch(x, y) {
@@ -113,6 +113,15 @@ class Calc extends Component {
     }
 
     select(n) {
+        this.changeOpacity("scratch1", 1);
+        this.changeOpacity("scratch2", 1);
+        this.changeOpacity("scratch3", 1);
+        this.changeOpacity("scratch4", 1);
+        this.changeOpacity("scratch5", 1);
+        this.changeOpacity("scratch6", 1);
+        this.changeOpacity("scratch7", 1);
+        this.changeOpacity("scratch8", 1);
+        this.changeOpacity("scratch9", 1);
         if (count > 2) {
             tri = [0, 0, 0, 0, 0, 0, 0, 0];
             tri[n] = true;
@@ -120,7 +129,41 @@ class Calc extends Component {
             this.setState(prevState => ({
                 isToggleOn: !prevState.isToggleOn // ▼▽▶▷▲△
             }));
+            var s1 = "scratch";
+            var s2 = s1, s3 = s1;
+            switch (sel) {
+                case 0:
+                    s1 += 1, s2 += 2, s3 += 3;
+                    break;
+                case 1:
+                    s1 += 4, s2 += 5, s3 += 6;
+                    break;
+                case 2:
+                    s1 += 7, s2 += 8, s3 += 9;
+                    break;
+                case 3:
+                    s1 += 1, s2 += 4, s3 += 7;
+                    break;
+                case 4:
+                    s1 += 2, s2 += 5, s3 += 8;
+                    break;
+                case 5:
+                    s1 += 3, s2 += 6, s3 += 9;
+                    break;
+                case 6:
+                    s1 += 1, s2 += 5, s3 += 9;
+                    break;
+                case 7:
+                    s1 += 3, s2 += 5, s3 += 7;
+                    break;
+            }
+            console.log(s1);
+            this.changeOpacity(s1, .3);
+            this.changeOpacity(s2, .3);
+            this.changeOpacity(s3, .3);
         }
+
+
     }
 
     submit() {
@@ -150,8 +193,12 @@ class Calc extends Component {
         }));
     }
 
-    changeColor(id, op) {
+    changeOpacity(id, op) {
         document.getElementById(id).style.opacity = op;
+    }
+
+    changeColor(id, col) {
+        document.getElementById(id).style.color = col;
     }
 
     render() {
@@ -163,7 +210,6 @@ class Calc extends Component {
                 <div className="Scratch">
                     <p className="Buttons">
                         <text onClick={() => this.select(6)} style={{color: 'lightyellow'}}>{tri[6] ? '▲' : '△'}</text>
-                        {/*<img src={require('./scratch.png')} className="Scratch" alt="" style={{opacity: 0}}/>*/}
                         <text onClick={() => this.select(3)} style={{color: 'lightyellow'}}>{tri[3] ? '▼' : '▽'}</text>
                         <text onClick={() => this.select(4)} style={{color: 'lightyellow'}}>{tri[4] ? '▼' : '▽'}</text>
                         <text onClick={() => this.select(5)} style={{color: 'lightyellow'}}>{tri[5] ? '▼' : '▽'}</text>
@@ -174,66 +220,84 @@ class Calc extends Component {
                         <text onClick={() => this.select(0)} style={{color: 'lightyellow'}}>{tri[0] ? '▶' : '▷'}</text>
                         {'\t'}
                         <img src={require('./scratch.png')} onClick={() => this.scratch(0, 0)} className="Scratch"
-                             alt="" id="scratch1" onMouseOver={() => this.changeColor("scratch1", .5)}
-                             onMouseLeave={() => this.changeColor("scratch1", 1)}/>
-                        <text onClick={() => this.scratch(0, 0)} onMouseOver={() => this.changeColor("scratch1", .5)}
-                              onMouseLeave={() => this.changeColor("scratch1", 1)}>{hid[0][0] ? val[0][0] : ' '}</text>
+                             alt="" id="scratch1"
+                             onMouseOver={() => (count > 2) ? this.changeOpacity("scratch1", 1) : this.changeOpacity("scratch1", .5)}
+                             onMouseLeave={() => this.changeOpacity("scratch1", 1)}/>
+                        <text onClick={() => this.scratch(0, 0)}
+                              onMouseOver={() => (count > 2) ? this.changeOpacity("scratch1", 1) : this.changeOpacity("scratch1", .5)}
+                              onMouseLeave={() => this.changeOpacity("scratch1", 1)}>{hid[0][0] ? val[0][0] : ' '}</text>
                         {'\t'}
                         <img src={require('./scratch.png')} onClick={() => this.scratch(1, 0)} className="Scratch"
-                             alt="" id="scratch2" onMouseOver={() => this.changeColor("scratch2", .5)}
-                             onMouseLeave={() => this.changeColor("scratch2", 1)}/>
-                        <text onClick={() => this.scratch(1, 0)} onMouseOver={() => this.changeColor("scratch2", .5)}
-                              onMouseLeave={() => this.changeColor("scratch2", 1)}>{hid[1][0] ? val[1][0] : ' '}</text>
+                             alt="" id="scratch2"
+                             onMouseOver={() => (count > 2) ? this.changeOpacity("scratch2", 1) : this.changeOpacity("scratch2", .5)}
+                             onMouseLeave={() => this.changeOpacity("scratch2", 1)}/>
+                        <text onClick={() => this.scratch(1, 0)}
+                              onMouseOver={() => (count > 2) ? this.changeOpacity("scratch2", 1) : this.changeOpacity("scratch2", .5)}
+                              onMouseLeave={() => this.changeOpacity("scratch2", 1)}>{hid[1][0] ? val[1][0] : ' '}</text>
                         {'\t'}
                         <img src={require('./scratch.png')} onClick={() => this.scratch(2, 0)} className="Scratch"
-                             alt="" id="scratch3" onMouseOver={() => this.changeColor("scratch3", .5)}
-                             onMouseLeave={() => this.changeColor("scratch3", 1)}/>
-                        <text onClick={() => this.scratch(2, 0)} onMouseOver={() => this.changeColor("scratch3", .5)}
-                              onMouseLeave={() => this.changeColor("scratch3", 1)}>{hid[2][0] ? val[2][0] : '  '}</text>
+                             alt="" id="scratch3"
+                             onMouseOver={() => (count > 2) ? this.changeOpacity("scratch3", 1) : this.changeOpacity("scratch3", .5)}
+                             onMouseLeave={() => this.changeOpacity("scratch3", 1)}/>
+                        <text onClick={() => this.scratch(2, 0)}
+                              onMouseOver={() => (count > 2) ? this.changeOpacity("scratch3", 1) : this.changeOpacity("scratch3", .5)}
+                              onMouseLeave={() => this.changeOpacity("scratch3", 1)}>{hid[2][0] ? val[2][0] : '  '}</text>
                         {'\t'}
                     </p>
                     <p>
                         <text onClick={() => this.select(1)} style={{color: 'lightyellow'}}>{tri[1] ? '▶' : '▷'}</text>
                         {'\t'}
                         <img src={require('./scratch.png')} onClick={() => this.scratch(0, 1)} className="Scratch"
-                             alt="" id="scratch4" onMouseOver={() => this.changeColor("scratch4", .5)}
-                             onMouseLeave={() => this.changeColor("scratch4", 1)}/>
-                        <text onClick={() => this.scratch(0, 1)} onMouseOver={() => this.changeColor("scratch4", .5)}
-                              onMouseLeave={() => this.changeColor("scratch4", 1)}>{hid[0][1] ? val[0][1] : ' '}</text>
+                             alt="" id="scratch4"
+                             onMouseOver={() => (count > 2) ? this.changeOpacity("scratch4", 1) : this.changeOpacity("scratch4", .5)}
+                             onMouseLeave={() => this.changeOpacity("scratch4", 1)}/>
+                        <text onClick={() => this.scratch(0, 1)}
+                              onMouseOver={() => (count > 2) ? this.changeOpacity("scratch4", 1) : this.changeOpacity("scratch4", .5)}
+                              onMouseLeave={() => this.changeOpacity("scratch4", 1)}>{hid[0][1] ? val[0][1] : ' '}</text>
                         {'\t'}
                         <img src={require('./scratch.png')} onClick={() => this.scratch(1, 1)} className="Scratch"
-                             alt="" id="scratch5" onMouseOver={() => this.changeColor("scratch5", .5)}
-                             onMouseLeave={() => this.changeColor("scratch5", 1)}/>
-                        <text onClick={() => this.scratch(1, 1)} onMouseOver={() => this.changeColor("scratch5", .5)}
-                              onMouseLeave={() => this.changeColor("scratch5", 1)}>{hid[1][1] ? val[1][1] : ' '}</text>
+                             alt="" id="scratch5"
+                             onMouseOver={() => (count > 2) ? this.changeOpacity("scratch5", 1) : this.changeOpacity("scratch5", .5)}
+                             onMouseLeave={() => this.changeOpacity("scratch5", 1)}/>
+                        <text onClick={() => this.scratch(1, 1)}
+                              onMouseOver={() => (count > 2) ? this.changeOpacity("scratch5", 1) : this.changeOpacity("scratch5", .5)}
+                              onMouseLeave={() => this.changeOpacity("scratch5", 1)}>{hid[1][1] ? val[1][1] : ' '}</text>
                         {'\t'}
                         <img src={require('./scratch.png')} onClick={() => this.scratch(2, 1)} className="Scratch"
-                             alt="" id="scratch6" onMouseOver={() => this.changeColor("scratch6", .5)}
-                             onMouseLeave={() => this.changeColor("scratch6", 1)}/>
-                        <text onClick={() => this.scratch(2, 1)} onMouseOver={() => this.changeColor("scratch6", .5)}
-                              onMouseLeave={() => this.changeColor("scratch6", 1)}>{hid[2][1] ? val[2][1] : '  '}</text>
+                             alt="" id="scratch6"
+                             onMouseOver={() => (count > 2) ? this.changeOpacity("scratch6", 1) : this.changeOpacity("scratch6", .5)}
+                             onMouseLeave={() => this.changeOpacity("scratch6", 1)}/>
+                        <text onClick={() => this.scratch(2, 1)}
+                              onMouseOver={() => (count > 2) ? this.changeOpacity("scratch6", 1) : this.changeOpacity("scratch6", .5)}
+                              onMouseLeave={() => this.changeOpacity("scratch6", 1)}>{hid[2][1] ? val[2][1] : '  '}</text>
                         {'\t'}
                     </p>
                     <p>
                         <text onClick={() => this.select(2)} style={{color: 'lightyellow'}}>{tri[2] ? '▶' : '▷'}</text>
                         {'\t'}
                         <img src={require('./scratch.png')} onClick={() => this.scratch(0, 2)} className="Scratch"
-                             alt="" id="scratch7" onMouseOver={() => this.changeColor("scratch7", .5)}
-                             onMouseLeave={() => this.changeColor("scratch7", 1)}/>
-                        <text onClick={() => this.scratch(0, 2)} onMouseOver={() => this.changeColor("scratch7", .5)}
-                              onMouseLeave={() => this.changeColor("scratch7", 1)}>{hid[0][2] ? val[0][2] : ' '}</text>
+                             alt="" id="scratch7"
+                             onMouseOver={() => (count > 2) ? this.changeOpacity("scratch7", 1) : this.changeOpacity("scratch7", .5)}
+                             onMouseLeave={() => this.changeOpacity("scratch7", 1)}/>
+                        <text onClick={() => this.scratch(0, 2)}
+                              onMouseOver={() => (count > 2) ? this.changeOpacity("scratch7", 1) : this.changeOpacity("scratch7", .5)}
+                              onMouseLeave={() => this.changeOpacity("scratch7", 1)}>{hid[0][2] ? val[0][2] : ' '}</text>
                         {'\t'}
                         <img src={require('./scratch.png')} onClick={() => this.scratch(1, 2)} className="Scratch"
-                             alt="" id="scratch8" onMouseOver={() => this.changeColor("scratch8", .5)}
-                             onMouseLeave={() => this.changeColor("scratch8", 1)}/>
-                        <text onClick={() => this.scratch(1, 2)} onMouseOver={() => this.changeColor("scratch8", .5)}
-                              onMouseLeave={() => this.changeColor("scratch8", 1)}>{hid[1][2] ? val[1][2] : ' '}</text>
+                             alt="" id="scratch8"
+                             onMouseOver={() => (count > 2) ? this.changeOpacity("scratch8", 1) : this.changeOpacity("scratch8", .5)}
+                             onMouseLeave={() => this.changeOpacity("scratch8", 1)}/>
+                        <text onClick={() => this.scratch(1, 2)}
+                              onMouseOver={() => (count > 2) ? this.changeOpacity("scratch8", 1) : this.changeOpacity("scratch8", .5)}
+                              onMouseLeave={() => this.changeOpacity("scratch8", 1)}>{hid[1][2] ? val[1][2] : ' '}</text>
                         {'\t'}
                         <img src={require('./scratch.png')} onClick={() => this.scratch(2, 2)} className="Scratch"
-                             alt="" id="scratch9" onMouseOver={() => this.changeColor("scratch9", .5)}
-                             onMouseLeave={() => this.changeColor("scratch9", 1)}/>
-                        <text onClick={() => this.scratch(2, 2)} onMouseOver={() => this.changeColor("scratch9", .5)}
-                              onMouseLeave={() => this.changeColor("scratch9", 1)}>{hid[2][2] ? val[2][2] : '  '}</text>
+                             alt="" id="scratch9"
+                             onMouseOver={() => (count > 2) ? this.changeOpacity("scratch9", 1) : this.changeOpacity("scratch9", .5)}
+                             onMouseLeave={() => this.changeOpacity("scratch9", 1)}/>
+                        <text onClick={() => this.scratch(2, 2)}
+                              onMouseOver={() => (count > 2) ? this.changeOpacity("scratch9", 1) : this.changeOpacity("scratch9", .5)}
+                              onMouseLeave={() => this.changeOpacity("scratch9", 1)}>{hid[2][2] ? val[2][2] : '  '}</text>
                         {'\t'}
                     </p>
                     <p>
