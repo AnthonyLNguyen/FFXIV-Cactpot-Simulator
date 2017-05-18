@@ -15,9 +15,28 @@
     top: 300px;
     margin: auto;
     align: center;
+    text-align: center;
     padding-bottom: 100px;
-    background-color: #444;
+    background-color: #555;
     padding-top: 16px;
+}
+
+.Rules{
+    position: relative;
+    top: 300px;
+    padding: 20px;
+    margin: auto;
+    align: center;
+    text-align: center;
+    background-color: #444;
+}
+
+.Buttons{
+    width: 230px;
+    margin: auto;
+    align: center;
+    text-align: center;
+    letter-spacing: 60px;
 }
 
 .Scratch {
@@ -31,6 +50,11 @@
     -ms-user-select: none;
     user-select: none;
     cursor:default;
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 text {
