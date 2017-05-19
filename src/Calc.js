@@ -5,34 +5,34 @@ import React, {Component} from 'react';
 import './Calc.css';
 import Rewards from './Rewards';
 
-var val = [
+let val = [
     [0, 0, 0],
     [0, 0, 0],
     [0, 0, 0]
-]
+];
 
-var hid = [
+let hid = [
     [0, 0, 0],
     [0, 0, 0],
     [0, 0, 0]
-]
+];
 
-const defaultRewards = [10000, 36, 720, 360, 80, 252, 108, 72, 54, 180, 72, 180, 119, 36, 306, 1080, 144, 1800, 3600]
+const defaultRewards = [10000, 36, 720, 360, 80, 252, 108, 72, 54, 180, 72, 180, 119, 36, 306, 1080, 144, 1800, 3600];
 
-var nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+let nums = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-var sums = [0, 0, 0, 0, 0, 0, 0, 0]
+let sums = [0, 0, 0, 0, 0, 0, 0, 0];
 
-var tri = [0, 0, 0, 0, 0, 0, 0, 0]
+let tri = [0, 0, 0, 0, 0, 0, 0, 0];
 
-var count = 0
+let count = 0;
 
-var sel = -1
+let sel = -1;
 
-var selsum = -1
+let selsum = -1;
 
 function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
+    let currentIndex = array.length, temporaryValue, randomIndex;
     while (0 !== currentIndex) {
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex -= 1;
@@ -48,14 +48,14 @@ function randomize() {
         [0, 0, 0],
         [0, 0, 0],
         [0, 0, 0]
-    ]
-    var revx = Math.floor(Math.random() * 3);
-    var revy = Math.floor(Math.random() * 3);
+    ];
+    let revx = Math.floor(Math.random() * 3);
+    let revy = Math.floor(Math.random() * 3);
     hid[revx][revy] = 1;
-    var n = 0;
+    let n = 0;
     shuffle(nums);
-    for (var i = 0; i < 3; i++) {
-        for (var j = 0; j < 3; j++) {
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
             val[j][i] = nums[n];
             n++;
         }
@@ -76,16 +76,6 @@ function sum() {
     sums[7] = val[0][2] + val[1][1] + val[2][0];
 }
 
-function printVal(i) {
-    var s = "\t";
-    if (i == 3)
-        return sums[7] + '\t' + sums[3] + '\t' + sums[4] + '\t' + sums[5] + '\t' + sums[6];
-    for (var j = 0; j < 3; j++)
-        s += val[j][i] + "\t";
-    s += sums[i]
-    return s;
-}
-
 
 class Calc extends Component {
     constructor(props) {
@@ -98,6 +88,9 @@ class Calc extends Component {
         this.select = this.select.bind(this);
         this.submit = this.submit.bind(this);
         this.changeOpacity = this.changeOpacity.bind(this);
+        this.revertOpacity = this.revertOpacity.bind(this);
+        this.mOpac = this.mOpac.bind(this);
+        this.mlOpac = this.mlOpac.bind(this);
     }
 
     scratch(x, y) {
@@ -112,7 +105,7 @@ class Calc extends Component {
         }
     }
 
-    select(n) {
+    revertOpacity() {
         this.changeOpacity("scratch1", 1);
         this.changeOpacity("scratch2", 1);
         this.changeOpacity("scratch3", 1);
@@ -122,6 +115,10 @@ class Calc extends Component {
         this.changeOpacity("scratch7", 1);
         this.changeOpacity("scratch8", 1);
         this.changeOpacity("scratch9", 1);
+    }
+
+    select(n) {
+        this.revertOpacity();
         if (count > 2) {
             tri = [0, 0, 0, 0, 0, 0, 0, 0];
             tri[n] = true;
@@ -129,35 +126,52 @@ class Calc extends Component {
             this.setState(prevState => ({
                 isToggleOn: !prevState.isToggleOn // ▼▽▶▷▲△
             }));
-            var s1 = "scratch";
-            var s2 = s1, s3 = s1;
+            let s1 = "scratch";
+            let s2 = s1, s3 = s1;
             switch (sel) {
                 case 0:
-                    s1 += 1, s2 += 2, s3 += 3;
+                    s1 += 1;
+                    s2 += 2;
+                    s3 += 3;
                     break;
                 case 1:
-                    s1 += 4, s2 += 5, s3 += 6;
+                    s1 += 4;
+                    s2 += 5;
+                    s3 += 6;
                     break;
                 case 2:
-                    s1 += 7, s2 += 8, s3 += 9;
+                    s1 += 7;
+                    s2 += 8;
+                    s3 += 9;
                     break;
                 case 3:
-                    s1 += 1, s2 += 4, s3 += 7;
+                    s1 += 1;
+                    s2 += 4;
+                    s3 += 7;
                     break;
                 case 4:
-                    s1 += 2, s2 += 5, s3 += 8;
+                    s1 += 2;
+                    s2 += 5;
+                    s3 += 8;
                     break;
                 case 5:
-                    s1 += 3, s2 += 6, s3 += 9;
+                    s1 += 3;
+                    s2 += 6;
+                    s3 += 9;
                     break;
                 case 6:
-                    s1 += 1, s2 += 5, s3 += 9;
+                    s1 += 1;
+                    s2 += 5;
+                    s3 += 9;
                     break;
                 case 7:
-                    s1 += 3, s2 += 5, s3 += 7;
+                    s1 += 3;
+                    s2 += 5;
+                    s3 += 7;
+                    break;
+                default:
                     break;
             }
-            console.log(s1);
             this.changeOpacity(s1, .3);
             this.changeOpacity(s2, .3);
             this.changeOpacity(s3, .3);
@@ -168,11 +182,12 @@ class Calc extends Component {
 
     submit() {
         if (sel > -1 && count > 2) {
+
             hid = [
                 [1, 1, 1],
                 [1, 1, 1],
                 [1, 1, 1]
-            ]
+            ];
 
             selsum = sums[sel];
             this.setState(prevState => ({
@@ -182,12 +197,11 @@ class Calc extends Component {
     }
 
     random() {
+        this.revertOpacity();
         selsum = 0;
         count = 0;
         tri = [0, 0, 0, 0, 0, 0, 0, 0];
-        {
-            randomize()
-        }
+        randomize();
         this.setState(prevState => ({
             isToggleOn: !prevState.isToggleOn
         }));
@@ -195,6 +209,14 @@ class Calc extends Component {
 
     changeOpacity(id, op) {
         document.getElementById(id).style.opacity = op;
+    }
+
+    mOpac(id) {
+        if (count <= 3) this.changeOpacity(id, .5);
+    }
+
+    mlOpac(id) {
+        if (count <= 3) this.changeOpacity(id, 1);
     }
 
     changeColor(id, col) {
@@ -221,55 +243,55 @@ class Calc extends Component {
                         {'\t'}
                         <img src={require('./scratch.png')} onClick={() => this.scratch(0, 0)} className="Scratch"
                              alt="" id="scratch1"
-                             onMouseOver={() => (count > 2) ? this.changeOpacity("scratch1", 1) : this.changeOpacity("scratch1", .5)}
-                             onMouseLeave={() => this.changeOpacity("scratch1", 1)}/>
+                             onMouseOver={() => this.mOpac("scratch1")}
+                             onMouseLeave={() => this.mlOpac("scratch1")}/>
                         <text onClick={() => this.scratch(0, 0)}
-                              onMouseOver={() => (count > 2) ? this.changeOpacity("scratch1", 1) : this.changeOpacity("scratch1", .5)}
-                              onMouseLeave={() => this.changeOpacity("scratch1", 1)}>{hid[0][0] ? val[0][0] : ' '}</text>
+                              onMouseOver={() => this.mOpac("scratch1")}
+                              onMouseLeave={() => this.mlOpac("scratch1")}>{hid[0][0] ? val[0][0] : ' '}</text>
                         {'\t'}
                         <img src={require('./scratch.png')} onClick={() => this.scratch(1, 0)} className="Scratch"
                              alt="" id="scratch2"
-                             onMouseOver={() => (count > 2) ? this.changeOpacity("scratch2", 1) : this.changeOpacity("scratch2", .5)}
-                             onMouseLeave={() => this.changeOpacity("scratch2", 1)}/>
+                             onMouseOver={() => this.mOpac("scratch2")}
+                             onMouseLeave={() => this.mlOpac("scratch2")}/>
                         <text onClick={() => this.scratch(1, 0)}
                               onMouseOver={() => (count > 2) ? this.changeOpacity("scratch2", 1) : this.changeOpacity("scratch2", .5)}
                               onMouseLeave={() => this.changeOpacity("scratch2", 1)}>{hid[1][0] ? val[1][0] : ' '}</text>
                         {'\t'}
                         <img src={require('./scratch.png')} onClick={() => this.scratch(2, 0)} className="Scratch"
                              alt="" id="scratch3"
-                             onMouseOver={() => (count > 2) ? this.changeOpacity("scratch3", 1) : this.changeOpacity("scratch3", .5)}
-                             onMouseLeave={() => this.changeOpacity("scratch3", 1)}/>
+                             onMouseOver={() => this.mOpac("scratch3")}
+                             onMouseLeave={() => this.mlOpac("scratch3")}/>
                         <text onClick={() => this.scratch(2, 0)}
-                              onMouseOver={() => (count > 2) ? this.changeOpacity("scratch3", 1) : this.changeOpacity("scratch3", .5)}
-                              onMouseLeave={() => this.changeOpacity("scratch3", 1)}>{hid[2][0] ? val[2][0] : '  '}</text>
+                              onMouseOver={() => this.mOpac("scratch3")}
+                              onMouseLeave={() => this.mlOpac("scratch3")}>{hid[2][0] ? val[2][0] : '  '}</text>
                         {'\t'}
                     </p>
                     <p>
                         <text onClick={() => this.select(1)} style={{color: 'lightyellow'}}>{tri[1] ? '▶' : '▷'}</text>
                         {'\t'}
-                        <img src={require('./scratch.png')} onClick={() => this.scratch(0, 1)} className="Scratch"
+                        <img src={require('./scratch.png')} onClick={() => this.scratch(0,1)} className="Scratch"
                              alt="" id="scratch4"
-                             onMouseOver={() => (count > 2) ? this.changeOpacity("scratch4", 1) : this.changeOpacity("scratch4", .5)}
-                             onMouseLeave={() => this.changeOpacity("scratch4", 1)}/>
-                        <text onClick={() => this.scratch(0, 1)}
-                              onMouseOver={() => (count > 2) ? this.changeOpacity("scratch4", 1) : this.changeOpacity("scratch4", .5)}
-                              onMouseLeave={() => this.changeOpacity("scratch4", 1)}>{hid[0][1] ? val[0][1] : ' '}</text>
+                             onMouseOver={() => this.mOpac("scratch4")}
+                             onMouseLeave={() => this.mlOpac("scratch4")}/>
+                        <text onClick={() => this.scratch(0,1)}
+                              onMouseOver={() => this.mOpac("scratch4")}
+                              onMouseLeave={() => this.mlOpac("scratch4")}>{hid[0][1] ? val[0][1] : ' '}</text>
                         {'\t'}
-                        <img src={require('./scratch.png')} onClick={() => this.scratch(1, 1)} className="Scratch"
+                        <img src={require('./scratch.png')} onClick={() => this.scratch(1,1)} className="Scratch"
                              alt="" id="scratch5"
-                             onMouseOver={() => (count > 2) ? this.changeOpacity("scratch5", 1) : this.changeOpacity("scratch5", .5)}
-                             onMouseLeave={() => this.changeOpacity("scratch5", 1)}/>
-                        <text onClick={() => this.scratch(1, 1)}
-                              onMouseOver={() => (count > 2) ? this.changeOpacity("scratch5", 1) : this.changeOpacity("scratch5", .5)}
-                              onMouseLeave={() => this.changeOpacity("scratch5", 1)}>{hid[1][1] ? val[1][1] : ' '}</text>
+                             onMouseOver={() => this.mOpac("scratch5")}
+                             onMouseLeave={() => this.mlOpac("scratch5")}/>
+                        <text onClick={() => this.scratch(1,1)}
+                              onMouseOver={() => this.mOpac("scratch5")}
+                              onMouseLeave={() => this.mlOpac("scratch5")}>{hid[1][1] ? val[1][1] : ' '}</text>
                         {'\t'}
-                        <img src={require('./scratch.png')} onClick={() => this.scratch(2, 1)} className="Scratch"
+                        <img src={require('./scratch.png')} onClick={() => this.scratch(2,1)} className="Scratch"
                              alt="" id="scratch6"
-                             onMouseOver={() => (count > 2) ? this.changeOpacity("scratch6", 1) : this.changeOpacity("scratch6", .5)}
-                             onMouseLeave={() => this.changeOpacity("scratch6", 1)}/>
-                        <text onClick={() => this.scratch(2, 1)}
-                              onMouseOver={() => (count > 2) ? this.changeOpacity("scratch6", 1) : this.changeOpacity("scratch6", .5)}
-                              onMouseLeave={() => this.changeOpacity("scratch6", 1)}>{hid[2][1] ? val[2][1] : '  '}</text>
+                             onMouseOver={() => this.mOpac("scratch6")}
+                             onMouseLeave={() => this.mlOpac("scratch6")}/>
+                        <text onClick={() => this.scratch(2,1)}
+                              onMouseOver={() => this.mOpac("scratch6")}
+                              onMouseLeave={() => this.mlOpac("scratch6")}>{hid[2][1] ? val[2][1] : '  '}</text>
                         {'\t'}
                     </p>
                     <p>
@@ -277,27 +299,27 @@ class Calc extends Component {
                         {'\t'}
                         <img src={require('./scratch.png')} onClick={() => this.scratch(0, 2)} className="Scratch"
                              alt="" id="scratch7"
-                             onMouseOver={() => (count > 2) ? this.changeOpacity("scratch7", 1) : this.changeOpacity("scratch7", .5)}
-                             onMouseLeave={() => this.changeOpacity("scratch7", 1)}/>
+                             onMouseOver={() => this.mOpac("scratch7")}
+                             onMouseLeave={() => this.mlOpac("scratch7")}/>
                         <text onClick={() => this.scratch(0, 2)}
-                              onMouseOver={() => (count > 2) ? this.changeOpacity("scratch7", 1) : this.changeOpacity("scratch7", .5)}
-                              onMouseLeave={() => this.changeOpacity("scratch7", 1)}>{hid[0][2] ? val[0][2] : ' '}</text>
+                              onMouseOver={() => this.mOpac("scratch7")}
+                              onMouseLeave={() => this.mlOpac("scratch7")}>{hid[0][2] ? val[0][2] : ' '}</text>
                         {'\t'}
                         <img src={require('./scratch.png')} onClick={() => this.scratch(1, 2)} className="Scratch"
                              alt="" id="scratch8"
-                             onMouseOver={() => (count > 2) ? this.changeOpacity("scratch8", 1) : this.changeOpacity("scratch8", .5)}
-                             onMouseLeave={() => this.changeOpacity("scratch8", 1)}/>
+                             onMouseOver={() => this.mOpac("scratch8")}
+                             onMouseLeave={() => this.mlOpac("scratch8")}/>
                         <text onClick={() => this.scratch(1, 2)}
-                              onMouseOver={() => (count > 2) ? this.changeOpacity("scratch8", 1) : this.changeOpacity("scratch8", .5)}
-                              onMouseLeave={() => this.changeOpacity("scratch8", 1)}>{hid[1][2] ? val[1][2] : ' '}</text>
+                              onMouseOver={() => this.mOpac("scratch8")}
+                              onMouseLeave={() => this.mlOpac("scratch8")}>{hid[1][2] ? val[1][2] : ' '}</text>
                         {'\t'}
                         <img src={require('./scratch.png')} onClick={() => this.scratch(2, 2)} className="Scratch"
                              alt="" id="scratch9"
-                             onMouseOver={() => (count > 2) ? this.changeOpacity("scratch9", 1) : this.changeOpacity("scratch9", .5)}
-                             onMouseLeave={() => this.changeOpacity("scratch9", 1)}/>
+                             onMouseOver={() => this.mOpac("scratch9")}
+                             onMouseLeave={() => this.mlOpac("scratch9")}/>
                         <text onClick={() => this.scratch(2, 2)}
-                              onMouseOver={() => (count > 2) ? this.changeOpacity("scratch9", 1) : this.changeOpacity("scratch9", .5)}
-                              onMouseLeave={() => this.changeOpacity("scratch9", 1)}>{hid[2][2] ? val[2][2] : '  '}</text>
+                              onMouseOver={() => this.mOpac("scratch9")}
+                              onMouseLeave={() => this.mlOpac("scratch9")}>{hid[2][2] ? val[2][2] : '  '}</text>
                         {'\t'}
                     </p>
                     <p>
